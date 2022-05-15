@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <script src="https://use.fontawesome.com/d1341f9b7a.js"></script>
+  <title>About me</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    .container {
+      text-align: center;
+      font-size: large;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      color: white;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(45deg, #49a09d, #5f2c82) no-repeat;
+      background-size: auto;
+      min-height: 100vh;
+      padding-bottom: 58px;
+      position: relative;
+    }
+
+    .box {
+      width: 450px;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 40px;
+      text-align: center;
+      margin: auto;
+      margin-top: 1%;
+      margin-bottom: 5%;
+      color: white;
+      font-family: 'Century Gothic', sans-serif;
+    }
+
+    .box-img {
+      border-radius: 50%;
+      width: 200px;
+      height: 200px;
+    }
+
+    .box h1 {
+      font-size: 30px;
+      letter-spacing: 4px;
+      font-weight: 100;
+    }
+
+    .box h5 {
+      font-size: 20px;
+      letter-spacing: 3px;
+      font-weight: 100;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    .box li {
+      display: inline-block;
+      margin: 6px;
+      list-style: none;
+    }
+
+    .box li a {
+      color: white;
+      text-decoration: none;
+      font-size: 60px;
+      transition: all ease-in-out 250ms;
+    }
+
+    .box li a:hover {
+      color: #b9b9b9;
+    }
+
+    footer {
+      color: white;
+      background-color: #2a3135;
+      font-size: 10px;
+      position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    }
+
+    .history a {
+      color: white;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+
+{% load static %}
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">My Bank</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item {% block homeactive %}  {% endblock homeactive %}">
+          <a class="nav-link" href="/">Home <span class="sr-only"></span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+
+
+      </ul>
+      <div class="ml-auto form-inline ">
+        <form method="get" action="/search" class="my-2 my-lg-0 mx-3">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query"
+            id="query">
+          <button class="btn btn-primary my-2 my-sm-0 " type="submit">Search</button>
+          <!-- <a href="/admin" role="button" target="_blank" class="btn btn-outline-success m-2 my-sm-0"> Admin Panel </a> -->
+        </form>
+        <ul class="navbar-nav mr-2 history">
+          <li class="{% block historyactive %}  {% endblock historyactive %}">
+            <a href={% url 'transaction' %}>History <i class="fa fa-history" style="font-size:15px"></i></a>
+
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="box">
+    <h2 class="py-2">About Project</h2>
+    <img src="/static/media/proj.png" alt="" class="box-img">
+    <h1>
+      The Spark Foundation</h1>
+    <h5>
+      INTERNSHIP</h5>
+    <p>
+      This Project is made under the Web Development And Design Internship at The Sparks Foundation.<br>BASIC BANKING
+      SYSTEM</p>
+  </div>
+  <div class="box">
+    <h2>About Me</h2>
+    <img src="/static/media/myimg.jpeg" width="200px" height="200px" alt="" class="box-img">
+    <h1>
+      AAKASH GUPTA</h1>
+    <h5>
+      Web Devloper - Web Designer</h5>
+    <p>
+      I am a Web Developer, Programmer & Machine Learning Enthusiast Living in Mumbai, India. I make Web Applications
+      usually with Django</p>
+    <ul>
+      <li><a href="https://www.facebook.com/profile.php?id=100016583745571" target="_blank"><i
+            class="fa fa-facebook-square" style="font-size:44px" aria-hidden="true"></i></a></li>
+      <li><a href="https://instagram.com/_.__aakash___._?utm_medium=copy_link" target="_blank"><i
+            class="fa fa-instagram" style="font-size:44px" aria-hidden="true"></i></a></li>
+      <li><a href="https://www.linkedin.com/in/aakash-gupta-17283a196/" target="_blank"><i class="fa fa-linkedin"
+            style="font-size:44px" aria-hidden="true"></i></a></li>
+    </ul>
+  </div>
+  <footer class="text-center pt-3">
+    <p>&copy Copyright 2021.<br>All Rights Reserved.<br> Made by AAKASH GUPTA. The Sparks Foundation</p>
+  </footer>
+</body>
+
+
+</html>

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock title %}
+{% block style %} 
+a{
+    color: white;
+    font-size: medium;
+}
+a:hover{
+    color: green;
+}
+{% endblock style %}
+{% block body %}
+  <div class="container pt-4">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Account Id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Balance</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in users %}
+        <tr>
+          <th scope="row">{{user.id}}</th>
+          <td>{{user.name}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.curr_balance}}</td>
+          <td><a href="user/{{user.id}}"><button class="btn">View</button></a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <a href="{% url 'home' %}">View all users></a>
+
+  </div>
+  {% endblock body %}

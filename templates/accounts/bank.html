@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block homeactive %} active {% endblock homeactive %}
+{% block title %} Home {% endblock title %}
+{% block body %}
+  <div class="container pt-4">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Account Id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Balance</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in users %}
+        <tr>
+          <th scope="row" class="myrows">{{user.id}}</th>
+          <td>{{user.name}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.curr_balance}}</td>
+          <td><a href="user/{{user.id}}"><button class="btn">View</button></a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+  </div>
+{% endblock body %}

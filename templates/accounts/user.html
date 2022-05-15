@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block homeactive %} active {% endblock homeactive %}
+{% block title %} Home {% endblock title %}
+{% block style %}
+tr{
+background-color:#2b8000;
+}
+{% endblock style %}
+{% block body %}
+
+<div class="container pt-4">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Account Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Balance</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row" class="myrows">{{user.id}}</th>
+        <td>{{user.name}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.curr_balance}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="container pt-5">
+  <div class="row">
+    <div class="col-sm-12 col-lg-12 col-md-12  d-block">
+      <h5 style="font-size:30px;text-align:center;color:white; font-family: 'Playfair Display', serif">Transfer Money
+      </h5>
+      <form action="" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="sender" value="{{user.id}}">
+        <input type="hidden" name="balance" value="{{user.curr_balance}}">
+
+        <div>
+          <label style="font-size: 25px;color:black; font-family: 'Times New Roman', Times, serif;">Transfer To:</label>
+          <select name="receiver" id="reciever" name="to" class="form-control" required>
+            <option value="" disabled selected>Choose</option>
+
+            {% for cust in alluser %}
+            <option style="color:black" value="{{cust.id}}">{{cust.name}} (Balance: {{cust.curr_balance}})</option>
+            {% endfor %}
+          </select>
+        
+
+        <br>
+        <br>
+            <label style="font-size: 25px;color:black; font-family: 'Times New Roman', Times, serif;">Amount:</label>
+            <input style="font-size: 18px;color:black;" input type="number" min="0" class="form-control" name="amount" required>   
+            <br><br>
+        </div>
+        <div class="text-center" >
+          <button style="font-size: 18px;width: 115px; height: 50px; font-family: 'Times New Roman', Times, serif;" class="btn btn-success mt-3" name="submit" type="submit" id="myBtn">TRANSFER</button>
+          </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock body %}

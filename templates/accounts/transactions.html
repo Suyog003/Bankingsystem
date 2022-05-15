@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock title %}
+{% block body %}
+
+    <br>
+    <h1 style="color:white;font-family: 'Playfair Display', serif;font-size: 30px;text-align:center;">Transaction History
+    </h1>
+    <br>
+    <div class="container">
+    <form method="POST">{% csrf_token %}
+        {% for genre in genres %}
+          <button type="submit" class="btn mb-2" name="genre" value="{{ genre }}">
+            {{ genre }}
+          </button>
+        {% endfor %}
+    </form>
+    </div>
+    <div class="container">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Sr No.</th>
+                    <th>Sender</th>
+                    <th>Reciever</th>
+                    <th>Transfer Amt</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for t in tr %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{t.sender_name}}</td>
+                    <td>{{t.receiver_name}}</td>
+                    <td>{{t.amount}}</td>
+                    <td>{{t.date}}</td>
+                    <td>{{t.status}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock body %}
